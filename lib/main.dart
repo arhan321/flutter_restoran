@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
@@ -23,8 +21,14 @@ import 'ui/home_page.dart';
 import 'ui/restaurant_detail_page.dart';
 import 'ui/restaurant_list_page.dart';
 import 'ui/restaurant_search_page.dart';
+import 'ui/login.dart';
 import 'utils/background_service.dart';
 import 'utils/notification_helper.dart';
+import 'ui/lupa_password.dart';
+import 'ui/register.dart';
+import 'ui/editprofile.dart';
+import 'ui/upload_toko.dart';
+import 'ui/upload_menu.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -101,14 +105,23 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         navigatorKey: navigatorKey,
-        initialRoute: HomePage.routeName,
+
+        // ⛳ Halaman pertama aplikasi = LoginPage
+        initialRoute: LoginPage.routeName,
+
         routes: {
+          LoginPage.routeName: (_) => const LoginPage(),
           HomePage.routeName: (_) => const HomePage(),
           RestaurantListPage.routeName: (_) => const RestaurantListPage(),
           RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
               restaurant:
                   ModalRoute.of(context)?.settings.arguments as Restaurant),
           RestaurantSearchPage.routeName: (_) => const RestaurantSearchPage(),
+          ForgotPasswordPage.routeName: (_) => const ForgotPasswordPage(),
+          RegisterPage.routeName: (_) => const RegisterPage(), // kalau ada
+          EditProfilePage.routeName: (_) => const EditProfilePage(),
+          UploadTokoPage.routeName: (_) => const UploadTokoPage(),
+          UploadMenuPage.routeName: (_) => const UploadMenuPage(),
         },
       ),
     );
